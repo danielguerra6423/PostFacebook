@@ -1,6 +1,13 @@
 let CommentForm = () => {
     return (
-        <h1>Componente Formulario</h1>
+        <section className="comentarios">
+            <textarea className="form-control" 
+                placeholder="Comenta algo...">
+
+            </textarea>
+            <br  />
+            <button className="btn btn-secondary">Comentar</button>
+        </section>
     );
 };
 export default CommentForm;
