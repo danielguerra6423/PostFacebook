@@ -1,5 +1,16 @@
 import imgPostre from "./../assets/postre-fresas.jpg";
-let Psot = () => {
+import { useState } from "react";
+import CommentForm from "./commentForm";
+
+let Post = () => {
+  // Manejo de estado de likes
+  let [likes, setLikes] = useState(0);
+  let updateLikes = () => setLikes(likes + 1);
+  
+  //Manejo del botón de comentarios
+  let [btnComentarios, setBtnComentarios] = useState(false);
+  let isShowComments = () => setBtnComentarios(!btnComentarios);
+  // console.log(btnComentarios);
   return (
     <div className="card" style={{ width: '18rem' }}>
       {/* <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe8qL1EoNsFu2OqdIZ0q1gi7Zoi8j85aDatMR301sx3g&s=10"} className="card-img-top" alt="..."/> */}
@@ -11,15 +22,23 @@ let Psot = () => {
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item d-flex justify-content-around">
-          <span>❤😂👍 10 mil</span>
+          <span>❤😂👍 {likes}</span>
           <span>2 mil 💬</span>
         </li>
         <li className="list-group-item d-flex justify-content-around">
-          <button className="btn btn-secondary">👍 likes</button>
-          <button className="btn btn-secondary">💬 Comments</button>
+          <button className="btn btn-secondary"
+            onClick={updateLikes}
+          >👍 likes</button>
+          <button className="btn btn-secondary" 
+              onClick={isShowComments}>
+            💬 Comments
+          </button>
         </li>
       </ul>
+      <div className="card-footer">
+         { btnComentarios && <CommentForm /> }
+      </div>
     </div>
   );
 };
-export default Psot;
+export default Post;
