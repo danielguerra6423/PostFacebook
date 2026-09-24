@@ -1,6 +1,9 @@
 import imgPostre from "./../assets/postre-fresas.jpg";
 import { useState } from "react";
 import CommentForm from "./commentForm";
+import ListComments from "./listComments";
+
+
 
 let Post = () => {
   // Manejo de estado de likes
@@ -11,6 +14,10 @@ let Post = () => {
   let [btnComentarios, setBtnComentarios] = useState(false);
   let isShowComments = () => setBtnComentarios(!btnComentarios);
   // console.log(btnComentarios);
+  let listCom = [
+    { id: 1, text: "Me gustan mucho los postres" },
+    { id: 2, text: "Pasame la receta" },
+    ];
   return (
     <div className="card" style={{ width: '18rem' }}>
       {/* <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe8qL1EoNsFu2OqdIZ0q1gi7Zoi8j85aDatMR301sx3g&s=10"} className="card-img-top" alt="..."/> */}
@@ -38,6 +45,7 @@ let Post = () => {
       <div className="card-footer">
          { btnComentarios && <CommentForm /> }
       </div>
+      <ListComments listComData={listCom} />
     </div>
   );
 };
