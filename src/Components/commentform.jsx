@@ -1,8 +1,17 @@
+import React, { useState } from "react";
+
 let CommentForm = () => {
+    let [comment, setComment] = useState("");
+    let getComment = (e) => { 
+        setComment(e.target.value);
+    }
     return (
         <section className="comentarios">
             <textarea className="form-control" 
-                placeholder="Comenta algo...">
+                placeholder="Comenta algo..."
+                value={comment}
+                onChange={getComment}>
+                
 
             </textarea>
             <br  />
